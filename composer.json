@@ -8,12 +8,12 @@
     "authors": [
         {
             "name": "Marlon Freire",
-            "email": "marlonfg@gmail.com",
+            "email": "marlonfg91@gmail.com",
             "role": "developer"
         }
     ],
     "require": {
-        "php": ">=5.4",
+        "php": ">=7.4",
         "composer/installers": "~1.0"
     },
     "autoload": {
@@ -21,7 +21,7 @@
 	       "app/","controllers/"
 	],
         "psr-4": {
-            "MarlonFreire\\Sincronizar\\": ""
+            "MarlonFreire\\MercadoLibre\\": ""
         }
     }
 }
