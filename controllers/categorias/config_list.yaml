@@ -1,0 +1,13 @@
+list: $/marlonfreire/mercadolibre/models/categoria/columns.yaml
+modelClass: MarlonFreire\MercadoLibre\Models\Categoria
+title: Categorias
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+showTree: 1
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'marlonfreire/mercadolibre/categorias/update/:id'

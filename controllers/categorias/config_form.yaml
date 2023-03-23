@@ -1,0 +1,10 @@
+name: Categorias
+form: $/marlonfreire/mercadolibre/models/categoria/fields.yaml
+modelClass: MarlonFreire\MercadoLibre\Models\Categoria
+defaultRedirect: marlonfreire/mercadolibre/categorias
+create:
+    redirect: 'marlonfreire/mercadolibre/categorias/update/:id'
+    redirectClose: marlonfreire/mercadolibre/categorias
+update:
+    redirect: marlonfreire/mercadolibre/categorias
+    redirectClose: marlonfreire/mercadolibre/categorias

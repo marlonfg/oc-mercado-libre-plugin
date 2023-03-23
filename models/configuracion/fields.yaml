@@ -1,0 +1,21 @@
+fields:
+    meli_app_id:
+        label: 'marlonfreire.mercadolibre::lang.app_id'
+        span: left
+        required: 1
+        type: text
+    meli_app_secret:
+        label: 'marlonfreire.mercadolibre::lang.app_secret'
+        span: right
+        required: 1
+        type: text
+    meli_automatic_sync:
+        label: 'marlonfreire.mercadolibre::lang.automatic_sync'
+        span: auto
+        type: switch
+        comment: 'marlonfreire.mercadolibre::lang.msg.comment_auto'
+    partial:
+        label: 'marlonfreire.mercadolibre::lang.field.partial'
+        span: right
+        type: switch
+        comment: 'marlonfreire.mercadolibre::lang.msg.comment_partial'

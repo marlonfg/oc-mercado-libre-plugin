@@ -1,0 +1,4 @@
+title: Categorias
+modelClass: MarlonFreire\MercadoLibre\Models\Categoria
+toolbar:
+    buttons: reorder_toolbar

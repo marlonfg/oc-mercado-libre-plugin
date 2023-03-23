@@ -1,0 +1,11 @@
+name: 'marlonfreire.mercadolibre::lang.menu.config'
+modelClass: MarlonFreire\MercadoLibre\Models\Configuracion
+form: $/marlonfreire/mercadolibre/models/configuracion/fields.yaml
+defaultRedirect: marlonfreire/mercadolibre/configuracion/update/1
+create:
+    redirect: 'marlonfreire/mercadolibre/configuracion/update/:id'
+    redirectClose: marlonfreire/mercadolibre/configuracion/update/:id
+update:
+    redirect: marlonfreire/mercadolibre/configuracion/update/:id
+    redirectClose: marlonfreire/mercadolibre/configuracion/update/:id
+preview: {  }

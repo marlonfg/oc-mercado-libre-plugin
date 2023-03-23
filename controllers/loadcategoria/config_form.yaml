@@ -1,0 +1,10 @@
+name: 'Cargar Categorías'
+form: $/marlonfreire/mercadolibre/models/loadcategoria/fields.yaml
+modelClass: MarlonFreire\MercadoLibre\Models\Categoria
+defaultRedirect: marlonfreire/mercadolibre/loadcategoria/create
+create:
+    redirect: 'marlonfreire/mercadolibre/loadcategoria/create'
+    redirectClose: marlonfreire/mercadolibre/loadcategoria/create
+update:
+    redirect: marlonfreire/mercadolibre/categoria
+    redirectClose: marlonfreire/mercadolibre/categoria

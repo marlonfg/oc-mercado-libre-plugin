@@ -1,0 +1,36 @@
+plugin:
+    name: 'marlonfreire.mercadolibre::lang.plugin.name'
+    description: 'marlonfreire.mercadolibre::lang.plugin.description'
+    author: 'Marlon Freire'
+    icon: oc-icon-refresh
+    homepage: ''
+navigation:
+    main-menu-sync:
+        label: 'marlonfreire.mercadolibre::lang.main_menu_sync'
+        url: marlonfreire/mercadolibre/configuracion/update/1
+        icon: icon-refresh
+        permissions:
+            - manage_sync
+        sideMenu:
+            side-menu-config:
+                label: 'marlonfreire.mercadolibre::lang.menu.config'
+                url: marlonfreire/mercadolibre/configuracion/update/1
+                icon: icon-cog
+                permissions:
+                    - manage_sync
+            side-menu-loadcategoria:
+                label: 'Cargar Categorías'
+                url: marlonfreire/mercadolibre/categoria/create
+                icon: icon-sitemap
+                permissions:
+                    - manage_sync
+            side-menu-categoria:
+                label: 'Categorías'
+                url: marlonfreire/mercadolibre/categoria
+                icon: icon-th-list
+                permissions:
+                    - manage_sync
+permissions:
+    manage_sync:
+        tab: 'marlonfreire.mercadolibre::lang.tab.manage_sync'
+        label: 'marlonfreire.mercadolibre::lang.field.manage_sync'

@@ -1,0 +1,12 @@
+fields:
+    categorias:
+        label: 'marlonfreire.mercadolibre::lang.category'
+        mode: string
+        separator: space
+        customTags: 0
+        useKey: 1
+        span: auto
+        type: SelectMultiple
+        required: 1
+        options: fetchFromMeli
+

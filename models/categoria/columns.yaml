@@ -1,0 +1,21 @@
+columns:
+    id:
+        label: 'marlonfreire.mercadolibre::lang.field.id'
+        type: number
+        searchable: true
+        sortable: true
+    name:
+        label: 'marlonfreire.mercadolibre::lang.field.category_name'
+        type: text
+        searchable: true
+        sortable: true
+    active:
+        label: 'lovata.toolbox::lang.field.active'
+        type: switch
+        searchable: false
+        sortable: true
+    created_at:
+        label: 'marlonfreire.mercadolibre::lang.field.creado'
+        type: timetense
+        searchable: true
+        sortable: true

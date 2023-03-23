@@ -1,0 +1,23 @@
+1.1.0:
+    - 'Initialize plugin.'
+1.2.0:
+    - 'Created table marlonfreire_mercadolibre_categorias'
+    - builder_table_create_marlonfreire_mercadolibre_categorias.php
+1.3.0:
+    - 'Created table marlonfreire_mercadolibre_categorias_web'
+    - builder_table_create_marlonfreire_mercadolibre_categorias_web.php
+1.4.0:
+    - 'Created table marlonfreire_mercadolibre_configuracion'
+    - builder_table_create_marlonfreire_mercadolibre_configuracion.php
+1.5.0:
+    - 'Seeder seeder_create_configuracion'
+    - seeder_create_configuracion.php
+1.6.0:
+    - 'Update table files add meli_id'
+    - update_table_files_add_meli_id.php
+1.7.0:
+    - 'Update table products add meli fields'
+    - update_table_products_add_meli_fields.php
+1.8.0:
+    - 'Update table offers add price_meli'
+    - update_table_offers_add_price_meli.php

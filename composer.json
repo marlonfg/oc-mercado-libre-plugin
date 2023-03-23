@@ -1,0 +1,27 @@
+{
+    "name": "marlonfreire/mercadolibre",
+    "type": "october-plugin",
+    "description": "Mercadolibre Sync OctoberCMS plugin",
+    "keywords": ["october", "cms", "mercadolibre", "plugin"],
+    "license": "MIT",
+
+    "authors": [
+        {
+            "name": "Marlon Freire",
+            "email": "marlonfg@gmail.com",
+            "role": "developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0"
+    },
+    "autoload": {
+	 "classmap": [
+	       "app/","controllers/"
+	],
+        "psr-4": {
+            "MarlonFreire\\Sincronizar\\": ""
+        }
+    }
+}
