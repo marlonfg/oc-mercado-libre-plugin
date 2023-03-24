@@ -5,6 +5,8 @@ use Lovata\Shopaholic\Models\Product;
 use Lovata\Shopaholic\Models\Offer;
 use Lovata\Shopaholic\Controllers\Products;
 use MarlonFreire\MercadoLibre\Models\Categoria;
+use MarlonFreire\Sitios\Console\MeliSync;
+use MarlonFreire\Sitios\Console\MeliUpdate;
 
 class Plugin extends PluginBase
 {
@@ -17,6 +19,14 @@ class Plugin extends PluginBase
 
     public function registerSettings()
     {
+    }
+
+    public function register()
+    {
+        
+        $this->registerConsoleCommand('meli:sync', MeliSync::class);
+        $this->registerConsoleCommand('meli:update', MeliUpdate::class);
+        
     }
 
     public function registerFormWidgets()
