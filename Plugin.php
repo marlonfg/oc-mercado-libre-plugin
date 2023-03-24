@@ -188,6 +188,7 @@ class Plugin extends PluginBase
                         'price'     => $obPrice->price_value,
                         'old_price' => $obPrice->old_price_value,
                         'price_meli' => $this->price_meli,
+                        'sale_price' => $this->sale_price,
                     ];
                 }
 
@@ -204,6 +205,8 @@ class Plugin extends PluginBase
                     $this->fSavedOldPrice = array_get($arPriceList[0], 'old_price');
                     if(array_key_exists('price_meli', $arPriceList[0]))
                         $this->price_meli = array_get($arPriceList[0], 'price_meli');
+                    if(array_key_exists('sale_price', $arPriceList[0]))
+                		$this->sale_price = array_get($arPriceList[0], 'sale_price');
                     $this->save();
                     unset($arPriceList[0]);
                 }
@@ -264,120 +267,7 @@ class Plugin extends PluginBase
                 }
             });
 
-            $controller->addDynamicMethod('onReplicate', function () {
-                // Código para la función onReplicate
-                if(Input::has('Product')){
-                    $prod_shop = Product::whereSlug(Input::get('Product.slug'))->first();
-
-                    $new = Product::create([
-                        'name' => Input::get('Product.name'),
-                        'active'=> $prod_shop->active,
-                        'featured'=> $prod_shop->featured,
-                        'show_no_stock'=> $prod_shop->show_no_stock,
-                        'preview_text'=> $prod_shop->preview_text,
-                        'category_id'=> $prod_shop->category->id,
-                        'brand_id'=> isset($prod_shop->brand) ? $prod_shop->brand->id : null,
-                        'popularity'=> $prod_shop->popularity,
-                    ]);
-
-                    if(Input::has('Product.listing_type_id')){
-                        $new->listing_type_id = $prod_shop->listing_type_id;
-                        $new->meli_condition = $prod_shop->meli_condition;
-                        $new->free_shipping = $prod_shop->free_shipping;
-                        $new->description = $prod_shop->description;
-
-                        $new->save();
-                    }
-
-                    if(Input::has('Product.additional_category'))
-                        $new->additional_category()->sync($prod_shop->additional_category->pluck('id')->toArray());
-
-
-                    if($prod_shop->offer)
-                        foreach($prod_shop->offer as $offer){
-                            $new_offer = $offer->replicate();
-                            $new_offer->Push();
-
-                            $new_offer->price = $offer->price_value;
-                            $new_offer->old_price = $offer->old_price_value;
-                            $new_offer->product_id = $new->id;
-                            $new_offer->save();
-                        }
-
-                    return Redirect::to('/backend/lovata/shopaholic/products/update/'.$new->id);
-                }
-            });
-
-            $controller->addDynamicMethod('onMakeOffers', function () {
-                // Código para la función onMakeOffers
-                if(Input::has('Product')) {
-                    $prod_shop = Product::whereSlug(Input::get('Product.slug'))->first();
-
-                    if(Input::has('Product.property')){
-                        $property = Input::get('Product.property');
-                    }else
-                        return;
-
-                    $offer_first = $prod_shop->offer->first();
-
-                    if(!$offer_first)
-                        return;
-
-                    //algoritmo de combinaciones
-
-                    $ar = $property;
-
-                    $counts = array_map("count", $ar);
-                    $total = array_product($counts);
-                    $res = [];
-
-                    $combinations = [];
-                    $curCombs = $total;
-
-                    foreach ($ar as $field => $vals) {
-                        $curCombs = $curCombs / $counts[$field];
-                        $combinations[$field] = $curCombs;
-                    }
-
-                    for ($i = 0; $i < $total; $i++) {
-                        foreach ($ar as $field => $vals) {
-                            $res[$i][$field] = $vals[($i / $combinations[$field]) % $counts[$field]];
-                        }
-                    }
-
-                    foreach($res as $r) {
-                        $offer = Offer::create([
-                            'active' => 1,
-                            'name' => $offer_first->name,
-                            'currency_id' => $offer_first->currency_id,
-                            'price' => $offer_first->price,
-                            'old_price' => $offer_first->price,
-                            'price_meli' => $offer_first->price,
-                            'quantity' => $offer_first->quantity,
-                            'product_id' => $prod_shop->id
-                        ]);
-
-
-                        foreach ($r as $key => $value) {
-                            $prop = Property::whereId($key)->get()->first();
-
-                            $val = $prop->property_value()->whereValue($value)->get()->first();
-
-                            $prop_offer = PropertyValueLink::firstOrCreate([
-                                'value_id' => $val->id,
-                                'property_id' => $prop->id,
-                                'element_id' => $offer->id,
-                                'element_type' => 'Lovata\Shopaholic\Models\Offer',
-                                'product_id' => $prod_shop->id
-                            ]);
-                        }
-                    }
-
-                    $offer_first->delete();
-
-                    return back();
-                }
-            });
+            
         });
     }
 }
